@@ -23,8 +23,8 @@ echo "RTR-HQ is done!!!"
 --
 smbclient //$SAMBA/diskfiles -N -c "get RTR-BR-disk001.vmdk RTR-BR-disk001.vmdk"
 echo "RTR-BR disk downloaded"
-qm create 101 --name "RTR-HQ" --cores 4 --memory 4096 --ostype l26 --scsihw virtio-scsi-single --net0 e1000,bridge=vmbr1 --net1 e1000,bridge=vmbr3 
-qm importdisk 101 RTR-HQ-disk001.vmdk $STORAGE --format qcow2 
+qm create 102 --name "RTR-BR" --cores 4 --memory 4096 --ostype l26 --scsihw virtio-scsi-single  --net0 e1000,bridge=vmbr2 --net1 e1000,bridge=vmbr4
+qm importdisk 102 RTR-BR-disk001.vmdk $STORAGE --format qcow2 
 echo "RTR-BR disk imported"
 qm set 101 -ide0 $STORAGE:vm-101-disk-0 --boot order=ide0
 echo "RTR-BR is done!!!"
